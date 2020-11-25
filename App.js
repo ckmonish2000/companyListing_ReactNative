@@ -9,6 +9,7 @@ import "react-native-gesture-handler"
 import {NavigationContainer} from "@react-navigation/native"
 import {createStackNavigator} from "@react-navigation/stack"
 
+
 const stack=createStackNavigator();
 export default function App(){
   return(
@@ -19,6 +20,7 @@ export default function App(){
     <stack.Navigator>
       <stack.Screen name="Home" component={Main} options={{title:"Welcome"}}/>
       <stack.Screen name="tester" component={Test} options={{title:"test"}}/>
+      <stack.Screen name="ts" component={List}/>
     </stack.Navigator>
     </NavigationContainer>
     

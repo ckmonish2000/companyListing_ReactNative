@@ -45,17 +45,20 @@ export default function Main({navigation}) {
   }
   }
 
+  const navi=(name,img,desc)=>{
+    navigation.navigate("tester",{img:img,name:name,desc:desc})
+  }
 
   return (
     <View style={styles.container}>
       
-      <Text>Open up App.js to start working on your app!</Text>
-      <Button title="test" onPress={()=>{navigation.navigate("tester")}}/>
-      <View style={{height:Dimensions.get('window').height-100,width:Dimensions.get('window').width}}>
-      <List list={companies}/>
+      {/* <Text>Open up App.js to start working on your app!</Text> */}
+      {/* <Button title="test" onPress={navi}/> */}
+      <View style={{height:Dimensions.get('window').height-80,width:Dimensions.get('window').width}}>
+      <List list={companies} navi={navi}/>
       </View>
 
-      <View style={{flexDirection:"row",position:"absolute",bottom:1,padding:10}}>
+      <View style={{flexDirection:"row",position:"absolute",bottom:0,padding:10}}>
         <View style={{margin:10,width:"50%"}}>
       <Button color="orange"disabled={prevPg===0}  onPress={handlePrev}  title={prevPg.toString()} />
         </View>
