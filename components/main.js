@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,Button,Dimensions} from 'react-native';
+import {Link} from "react-router-native"
 import List from "./List";
 
-export default function Main() {
+export default function Main({navigation}) {
   const [prevPg, setprevPg] = useState(0)
   const [nextPg, setnextPg] = useState(1)
   const [next, setnext] = useState(20)
@@ -49,7 +50,7 @@ export default function Main() {
     <View style={styles.container}>
       
       <Text>Open up App.js to start working on your app!</Text>
-      
+      <Button title="test" onPress={()=>{navigation.navigate("tester")}}/>
       <View style={{height:Dimensions.get('window').height-100,width:Dimensions.get('window').width}}>
       <List list={companies}/>
       </View>
@@ -67,7 +68,6 @@ export default function Main() {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -12,8 +12,8 @@ export default function List(props) {
             {data.map((e,idx)=>{
                 if(e.company_image_url===""){console.log(e)}
                return(  
-                   <TouchableOpacity onPress={()=>{console.log(e.company_name)}}>
-               <View style={{flexDirection:"row",borderTopColor:"grey",borderWidth:0.5}} key={e.company_id+Math.random()}>
+                   <TouchableOpacity onPress={()=>{console.log(e.company_name)}} >
+               <View style={{flexDirection:"row",borderTopColor:"grey",borderWidth:0.5,height:50,alignItems:"center"}} key={e.company_id+Math.random()}>
                <Image style={{padding:20,marginLeft:10}} source={{
                     uri:e.company_image_url,
                     height:40,
