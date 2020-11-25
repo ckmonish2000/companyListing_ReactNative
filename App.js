@@ -4,6 +4,8 @@ import { StyleSheet, Text, View, TouchableOpacity,Button,Dimensions} from 'react
 import List from "./components/List";
 
 export default function App() {
+  const [prevPg, setprevPg] = useState(0)
+  const [nextPg, setnextPg] = useState(1)
   const [next, setnext] = useState(20)
   const [prev, setprev] = useState(0)
   const [companies, setcompanies] = useState({})
@@ -22,9 +24,13 @@ export default function App() {
     let nexts=next+10;
     setnext(nexts);
     setprev(prevs);
+    setprevPg(nextPg);
+    setnextPg(nextPg+1);
   }
 
   const handlePrev=()=>{
+    setnextPg(prevPg)
+    setprevPg(prevPg-1)
     if(prev===10){
       let nexts=20;
     let prevs=0;
@@ -44,16 +50,16 @@ export default function App() {
       
       <Text>Open up App.js to start working on your app!</Text>
       
-      <View style={{height:Dimensions.get('window').height-130,width:Dimensions.get('window').width}}>
+      <View style={{height:Dimensions.get('window').height-100,width:Dimensions.get('window').width}}>
       <List list={companies}/>
       </View>
 
-      <View style={{flexDirection:"row",position:"absolute",bottom:10,padding:10}}>
+      <View style={{flexDirection:"row",position:"absolute",bottom:1,padding:10}}>
         <View style={{margin:10,width:"50%"}}>
-      <Button color="orange"disabled={prev===0}  onPress={handlePrev}  title={prev.toString()} />
+      <Button color="orange"disabled={prevPg===0}  onPress={handlePrev}  title={prevPg.toString()} />
         </View>
         <View style={{margin:10,width:"50%"}}>
-      <Button color="orange"  onPress={handleNext} title={next.toString()} />
+      <Button color="orange"  onPress={handleNext} title={nextPg.toString()} />
       </View>
       </View>
       
