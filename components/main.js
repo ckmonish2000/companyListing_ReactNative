@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,Button} from 'react-native';
 
-export default function App() {
+export default function Main() {
   const [next, setnext] = useState(10)
   const [prev, setprev] = useState(0)
   const [companies, setcompanies] = useState({})
@@ -36,7 +36,7 @@ export default function App() {
       
       <Text>Open up App.js to start working on your app!</Text>
       
-      <View style={{flexDirection:"row",position:"absolute",bottom:10}}>
+      <View style={{justifyContent:"flex-end"}}>
         <View style={{margin:10,width:"50%"}}>
       <Button color="orange" onPress={handlePrev}  title={prev.toString()} />
         </View>
@@ -53,8 +53,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  alignItems:"center" ,
-  justifyContent:"center"   
+    backgroundColor: '#fff',
+    flexDirection:"column",
+    justifyContent:"center",
+    
+
+    
   },
  
 });
