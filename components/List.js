@@ -8,7 +8,7 @@ export default function List(props) {
       console.log(e)
   })
     return (
-        <ScrollView >
+        <ScrollView onScrollEndDrag={()=>props.incr()}>
             {data.map((e,idx)=>{
                 if(e.company_image_url===""){console.log(e)}
                return(  

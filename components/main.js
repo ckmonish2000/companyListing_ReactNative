@@ -5,8 +5,6 @@ import {Link} from "react-router-native"
 import List from "./List";
 
 export default function Main({navigation}) {
-  const [prevPg, setprevPg] = useState(0)
-  const [nextPg, setnextPg] = useState(1)
   const [next, setnext] = useState(20)
   const [prev, setprev] = useState(0)
   const [companies, setcompanies] = useState({})
@@ -20,52 +18,23 @@ export default function Main({navigation}) {
 
   // console.log(companies)
 
-  const handleNext=()=>{
-    let prevs=next;
-    let nexts=next+10;
-    setnext(nexts);
-    setprev(prevs);
-    setprevPg(nextPg);
-    setnextPg(nextPg+1);
-  }
 
-  const handlePrev=()=>{
-    setnextPg(prevPg)
-    setprevPg(prevPg-1)
-    if(prev===10){
-      let nexts=20;
-    let prevs=0;
-    setnext(nexts);
-    setprev(prevs);
-    }else{
-    let nexts=prev;
-    let prevs=prev-10;
-    setnext(nexts);
-    setprev(prevs);
-  }
-  }
 
   const navi=(name,img,desc)=>{
     navigation.navigate("tester",{img:img,name:name,desc:desc})
+  }
+  const incrnxt=()=>{
+    setnext(next+10)
   }
 
   return (
     <View style={styles.container}>
       
-      {/* <Text>Open up App.js to start working on your app!</Text> */}
-      {/* <Button title="test" onPress={navi}/> */}
+     
       <View style={{height:Dimensions.get('window').height-80,width:Dimensions.get('window').width}}>
-      <List list={companies} navi={navi}/>
+      <List list={companies} navi={navi} incr={incrnxt}/>
       </View>
 
-      <View style={{flexDirection:"row",position:"absolute",bottom:0,padding:10}}>
-        <View style={{margin:10,width:"50%"}}>
-      <Button color="orange"disabled={prevPg===0}  onPress={handlePrev}  title={prevPg.toString()} />
-        </View>
-        <View style={{margin:10,width:"50%"}}>
-      <Button color="orange"  onPress={handleNext} title={nextPg.toString()} />
-      </View>
-      </View>
       
       <StatusBar style="auto" />
     </View>
